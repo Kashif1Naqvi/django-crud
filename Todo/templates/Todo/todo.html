@@ -1,0 +1,20 @@
+{% extends 'Todo/base.html' %}
+{% block content %}
+<div class="p-5" >
+    <a href="{% url 'Todo:createtodo' %}"  class="m-2 btn btn-outline-success ml-auto mb-4">Create Todo </a><br>
+    {% for todo in todos %}    
+        <ul class=" navbar-nav bg-dark p-3 " >
+        <a href="{% url 'Todo:viewtodo' todo.id %}" class="mr-auto" >
+            <li class="text-success nav-item "> 
+            {% if todo.important %}<b>{% endif %} {{todo.title}} {% if todo.important %}</b>{% endif %}
+                {% if todo.memo %} - {{todo.memo}}
+            {% endif %}
+            <li>
+        </a>
+        </ul>
+        <hr>
+        
+    {% endfor %}
+
+</div>
+{% endblock %}

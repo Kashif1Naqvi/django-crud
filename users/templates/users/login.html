@@ -1,0 +1,17 @@
+{% extends 'Todo/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+  <div class="container " style="margin-top:200px;" >
+    <h3 class="text-center mb-5 mt-5 font-weight-bold text-light " >Login Now!</h3>
+    <div class="row">
+            <form method="POST" class="form ml-auto mr-auto justify-content-center">
+                {% csrf_token %}
+                    {{form|crispy}}
+                <button type="submit" class="btn btn-outline-success btn-md" >Login</button>
+                <p class="mr-auto ml-auto text-light font-weight-bold" >Not a Accout yet? <a class="btn btn-outline-success btn-sm" href="{% url 'signup' %}">Register Here!</a> </p>
+            </form>  
+    </div>
+  </div>
+
+{% endblock %}

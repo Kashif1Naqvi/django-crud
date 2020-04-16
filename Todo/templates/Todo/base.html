@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'Todo/css/bootstrap.min.css' %}" >
+    <link rel="stylesheet" href="{% static 'Todo/css/style.css' %}" >
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> 
+    <title>Kashif | Tasks managements</title>
+</head>
+<body>
+<header class="mb-5" >
+        <nav class="navbar navbar-light  navbar-expand-md fixed-top " style="opacity: .5;" >
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <img class="rounded-circle" src="{%  static 'Todo/img/logo.png' %}" width="50" alt="">
+            </a>
+            <button type="button"  class="navbar-toggler "  data-toggle="collapse" data-target="#nav"  >
+                <span class="navbar-toggler-icon bg-dark " ></span>
+            </button>
+            <div class="collapse navbar-collapse" id="nav" >
+                <ul class="navbar-nav ml-auto text-light">
+                    <li class="list-item" >
+                        <a class="nav-link font-weight-bold " style="color:whitesmoke "  href="{% url 'home' %}">Home</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                        <li class="list-item" >
+                            <a class="nav-link font-weight-bold " style="color:whitesmoke "  href="{% url 'Todo:todo' %}">Todo</a>
+                        </li>
+                        <li class="list-item " >
+                            <a class="nav-link font-weight-bold " style="color:whitesmoke "  href="{% url 'Todo:completelisttodo' %}">Complete</a>
+                        </li>
+                        <li class="list-item " >
+                            <a class="nav-link font-weight-bold " style="color:whitesmoke "  href="{% url 'logout' %}">Logout</a>
+                        </li>
+                    {%else%}
+                        <li class="list-item" >
+                            <a class="nav-link font-weight-bold " style="color:whitesmoke "  href="{% url 'login' %}">Login</a>
+                        </li>
+                        <li class="list-item" >
+                            <a class="nav-link font-weight-bold " style="color:whitesmoke "  href="{% url 'signup' %}">Sign up</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="contriner mt-5">
+        {% block content %}{% endblock content %}
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+</html>

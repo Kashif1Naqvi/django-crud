@@ -1,0 +1,16 @@
+{% extends 'Todo/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+  <div class="container" >
+    <h1 class="text-center font-weight-bold text-light " >Create Todo</h1>
+    <div class="row">
+            <form method="POST" class="form ml-auto mr-auto justify-content-center">
+                {% csrf_token %}
+                    {{form|crispy}}
+                <button type="submit" class="btn btn-outline-success btn-md" >Create</button>
+            </form>
+    </div>
+  </div>
+
+{% endblock %}

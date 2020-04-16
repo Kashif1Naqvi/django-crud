@@ -1,0 +1,12 @@
+{% extends 'Todo/base.html' %}
+{% block content %}
+Hello world!
+
+
+<br><br><br><br>
+{{user}}
+
+<img src={{user.profile.image.url}} alt="notjh" />
+<a href={% url 'logout' %} >Logout</a>
+
+{% endblock %}

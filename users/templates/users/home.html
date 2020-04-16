@@ -1,0 +1,23 @@
+{% extends 'Todo/base.html' %}
+{% block content %}
+    <div class="sign">
+      <span class="fast-flicker">T</span>oD<span class="flicker">o</span>
+      
+    </div>
+<div class="bg" >
+    <div class="inner mt-5 text-light font-weight-bold">
+        <h3>Task management Application</h3>
+        <p>This is great for you for managing tasks</p>
+    </div>
+    <div class="inner text-light font-weight-bold">
+        <h3>Let's go and make tasks for you </h3>
+        {% if user.is_authenticated %}
+            <a class="btn btn-outline-success btn-lg mt-3  "  href={% url 'Todo:createtodo' %}  >New Todo</a>
+        {% else %}
+            <a class="btn btn-outline-success btn-lg mt-3 "  href={% url 'signup' %}  >Join us</a>
+        {% endif %}
+    </div>
+    
+   
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'Todo/base.html' %}
+{% block content %}
+<div class="p-5" >
+    {% for todo in todos %}    
+        <ul class=" navbar-nav bg-dark p-3 " >
+        <a href="{% url 'Todo:todo' %}" class="mr-auto" >
+            <li class="text-success nav-item "> 
+            {% if todo.important %}<b>{% endif %}  {{todo.title}} {% if todo.important %}</b>{% endif %}
+            {% if todo.memo %} - {{todo.memo}} - {{todo.datecompleted |date:'M j Y H:i'}} {% endif %}
+            <li>
+        </a>
+        </ul>
+        <hr>
+        
+    {% endfor %}
+
+</div>
+{% endblock content %}

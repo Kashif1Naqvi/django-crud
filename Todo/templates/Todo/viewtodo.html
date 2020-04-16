@@ -1,0 +1,41 @@
+{% extends 'Todo/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}    
+<div class="p-5" >
+        <ul class=" navbar-nav bg-dark p-3 " >
+        <a href="{% url 'Todo:viewtodo' todo.id %}" class="mr-auto" >
+            <li class="text-success nav-item "> 
+            {% if todo.important %}<b>{% endif %} {{todo.title}} {% if todo.important %}</b>{% endif %}
+                {% if todo.memo %} - {{todo.memo}}
+            {% endif %}
+            <li>
+        </a>
+        </ul>
+</div>
+  <div class="container" >
+    <h1 class="text-center font-weight-bold text-light " >Update tasks</h1>
+    <div class="row">
+            <form method="POST" class="form ml-auto mr-auto justify-content-center">
+                {% csrf_token %}
+                    {{form|crispy}}
+                <button type="submit" class="btn btn-outline-success btn-md" >Update</button>
+            </form>
+    </div>
+  <div class="row form ml-auto mr-auto justify-content-center" >
+    
+        <form method='POST' action="{% url 'Todo:completetodo' todo.id %}" class="p-2" >
+        {% csrf_token %}
+        <button type="submit" class="btn btn-success" >complete</button>
+        </form>
+        <form method='POST' action="{% url 'Todo:deletetodo' todo.id %}"  class="p-2">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger" >delete</button>
+        </form>
+    
+  </div>
+
+  </div>
+
+
+
+{% endblock %}
